@@ -1,63 +1,101 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/styles.css">
-    <!-- font-awesome -->
-    <script src="https://kit.fontawesome.com/ec3b8d37e8.js" crossorigin="anonymous"></script>
-    <title>BingeItRight!</title>
-  </head>
-  <body>
-    <div class="container-fluid">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: 14ffec">
 
-    <a class="navbar-brand" href="#">bingeItRight!</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Sign In</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Watchlist</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
-            My Account
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">My Profile</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Log Out</a></li>
-          </ul>
-        </li>
-      </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search">
-        <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
-      </form>
-    </div>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- font-awesome -->
+  <script src="https://kit.fontawesome.com/ec3b8d37e8.js" crossorigin="anonymous"></script>
+  <title>BingeItRight!</title>
+</head>
 
-</nav>
-  </div>
-<section id="title">
-  <div class="row container-fluid">
-    <div class="col-lg-6" style="background-color: red;">
-      <h1>hello</h1>
-    </div>
-    <div class="col-lg-6">
-      <h1>world</h1>
-    </div>
-  </div>
-</section>
+<body>
 
-    <!--Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-  </body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid ">
+      <a class="navbar-brand" href="#"><span class="nav-logo">bingeItRight!</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" href="#"><i class="fas fa-sign-in-alt"></i> Sign In</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><i class="fas fa-mobile-alt"></i> Watchlist</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+              <i class="fas fa-user-circle"></i> My Account
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#"><i class="fas fa-user-circle"></i> My Profile</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i> Log Out</a></li>
+            </ul>
+          </li>
+        </ul>
+        <form class="d-flex nav-search">
+          <input class="form-control me-2 " type="search" placeholder="Search">
+          <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <section id="title">
+    <div class="row ">
+      <div class="col-lg-5">
+        <h1>Binge them All Show your love for movies here!</h1>
+      </div>
+      <div class="col-lg-7">
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="5000">
+              <img src="images\carousel\You.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item" data-bs-interval="5000">
+              <img src="images\carousel\Breaking Bad.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item" data-bs-interval="5000">
+              <img src="images\carousel\Lost.jpg" class="d-block w-100" alt="...">
+            </div>
+          </div>
+          <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button> -->
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="topHollywood">
+    <h1>Top Hollywood</h1>
+  </section>
+  <section id="topBollywood">
+    <h1>Top Bollywood</h1>
+  </section>
+  <section id="footer">
+
+  </section>
+  <!--Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+</body>
+
 </html>

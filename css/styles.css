@@ -1,6 +1,57 @@
 
 
 
+
 .container-fluid{
-  padding: 1% 5%;
+  margin: 0;
+  padding: .5% 5%;
+}
+
+/* Navigation Bar */
+.navigation{
+  background-color: #323232;
+}
+.navbar{
+  padding: 0;
+}
+.navbar-brand{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.nav-logo{
+  border-radius: 2px;
+  padding: .5rem;
+  background-color: #14FFEC;
+  color: #393e46;
+}
+.nav-item{
+  padding: 0 8px;
+}
+.nav-link{
+    font-size: 1.1rem;
+    font-weight: 300;
+}
+.nav-search{
+  width: 40%;
+}
+
+/* Title Section */
+#title{
+  background-color: #ff2e63;
+}
+
+/*Top Hollywood*/
+#topHollywood{
+  background-color: #323232;
+}
+
+/* Top Bollywood */
+#topBollywood{
+  background-color: #14ffec;
+}
+
+/* Footer */
+
+@media (max-width : 1028px){
+
 }
