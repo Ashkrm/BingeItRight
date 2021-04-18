@@ -2,10 +2,8 @@ body{
   background-color: black;
 }
 
-
-
 .container-fluid{
-  padding: 0 5%;
+  padding: 0 7%;
 }
 
 /* Navigation Bar */
@@ -38,8 +36,6 @@ body{
 }
 
 /* Title Section */
-#title{
-}
 .title-content{
   color: white;
   font-weight:900;
@@ -50,6 +46,8 @@ body{
 
 /*Top Hollywood*/
 #topHollywood{
+  padding-top: 1%;
+  padding-bottom: 2%;
   background-color: #323232;
 }
 .m{
@@ -58,9 +56,11 @@ body{
 .img-wrap{
   padding: 0;
   margin: 1rem;
+  position: relative;
 }
 .topHollywood-title{
   text-align: center;
+  color: white;
 }
 .image-description {
   position: absolute;
@@ -87,14 +87,25 @@ body{
 
 /* Top Bollywood */
 #topBollywood{
+  padding-top: 1%;
+  padding-bottom: 2%;
   background-color: #14ffec;
 }
 .topBollywood-title{
   text-align: center;
+  color: white;
 }
 
 /* Footer */
+#footer{
+  padding-top: 1%;
+  padding-bottom: 0.5%;
+  text-align: center;
+  background-color: #323232;
+  color: white;
+}
 
+/* Media Queries */
 @media (max-width : 1028px){
 
 }
