@@ -38,17 +38,22 @@ body{
 /* Title Section */
 .title-content{
   color: white;
-  font-weight:900;
+  font-weight:bold;
   font-size: 3.5rem;
   line-height: 1.5;
-  padding-top: 4rem;
+  padding: 8% 0 0 0;
 }
 
 /*Top Hollywood*/
-#topHollywood{
-  padding-top: 1%;
+.topHollywood{
+  padding-top: 1.5%;
   padding-bottom: 2%;
   background-color: #323232;
+}
+.topHollywood-title{
+  text-align: center;
+  color: white;
+  font-family: 'Sacramento', handwriting;
 }
 .m{
   width: 100%;
@@ -57,10 +62,6 @@ body{
   padding: 0;
   margin: 1rem;
   position: relative;
-}
-.topHollywood-title{
-  text-align: center;
-  color: white;
 }
 .image-description {
   position: absolute;
@@ -72,7 +73,6 @@ body{
   color: white;
   visibility: hidden;
 }
-
 .img-wrap:hover .image-description {
   visibility: visible;
   opacity: 1;
@@ -86,23 +86,29 @@ body{
 }
 
 /* Top Bollywood */
-#topBollywood{
-  padding-top: 1%;
+.topBollywood{
+  padding-top: 1.5%;
   padding-bottom: 2%;
   background-color: #14ffec;
 }
 .topBollywood-title{
   text-align: center;
   color: white;
+  font-family: 'Sacramento', handwriting;
 }
 
 /* Footer */
-#footer{
+.footer{
   padding-top: 1%;
   padding-bottom: 0.5%;
   text-align: center;
   background-color: #323232;
   color: white;
+  font-family: 'Raleway', serif;
+}
+
+.footer a{
+  color: inherit;
 }
 
 /* Media Queries */
