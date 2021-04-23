@@ -1,5 +1,22 @@
 <%- include("header"); -%>
-
-
-
+<div class="container-fluid search">
+  <h2 class="search-heading">Showing results for "<%=search%>"</h2>
+  <div class="result-field">
+    <% for(var i=0; i<results.length; i++){ %>
+    <%if(('title' in results[i]) && ('image' in results[i])){ %>
+    <div class="row search-item">
+      <div class="col-md-3 col-sm-3 col-3">
+        <img src="<%=results[i].image.url%>" alt="Poster of <%=results[i].title%>" class="resultimg">
+      </div>
+      <div class="col-md-9 col-sm-9 col-9">
+        <h4><strong><%=results[i].title%></strong></h4>
+        <h6><strong>Running Time (in min): </strong><%=results[i].runningTimeInMinutes%></h6>
+        <h6><strong>Title type: </strong><%=results[i].titleType%></h6>
+        <h6><strong>Year: </strong><%=results[i].year%></h6>
+      </div>
+    </div>
+    <%}%>
+    <%}%>
+  </div>
+</div>
 <%- include("footer"); -%>
