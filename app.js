@@ -3,6 +3,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const http = require("https");
+const { title } = require('process');
 
 const app = express();
 
@@ -25,12 +26,11 @@ app.get("/search", function(req, res){
   	"port": null,
   	"path": "/title/find?q="+encodeURI(search),
   	"headers": {
-  		"x-rapidapi-key": process.env.API_KEY,
+  		"x-rapidapi-key":process.env.API_KEY,
   		"x-rapidapi-host": "imdb8.p.rapidapi.com",
   		"useQueryString": true
   	}
   };
-
   const request = http.request(options, function (response) {
   	const chunks = [];
   	response.on("data", function (chunk) {
@@ -47,7 +47,6 @@ app.get("/search", function(req, res){
   request.end();
 });
 
-<<<<<<< HEAD
 app.get("/profile",function(req,res){
   res.render("profile");
 });
@@ -56,12 +55,44 @@ app.get("/developers",function(req,res){
   res.render("developers");
 });
 
-app.post("/", function(req, res){
-  var search = req.body.search;
-=======
+app.get("/title/:titleid",function(request,response){
+  titleid=request.params.titleid;
+
+console.log(titleid);
+const options = {
+	"method": "GET",
+	"hostname": "imdb8.p.rapidapi.com",
+	"port": null,
+	"path": "/title/get-overview-details?tconst="+titleid,
+	"headers": {
+		"x-rapidapi-key": process.env.API_KEY,
+		"x-rapidapi-host": "imdb8.p.rapidapi.com",
+		"useQueryString": true
+	}
+};
+
+const req = http.request(options, function (res) {
+	const chunks = [];
+
+	res.on("data", function (chunk) {
+		chunks.push(chunk);
+	});
+
+	res.on("end", function () {
+		const body = Buffer.concat(chunks);
+    const searches=JSON.parse(body);
+		console.log(body.toString());
+    console.log(searches);
+    response.render("title",{result:searches});
+	});
+});
+
+req.end();
+  
+});
+
 app.post("/search", function(req, res){
   search = req.body.search;
->>>>>>> b4e316eacedc57680c64cbba1184bf80d3ac96f2
   console.log(search);
   res.redirect("/search");
 })
