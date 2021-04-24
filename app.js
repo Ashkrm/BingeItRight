@@ -15,6 +15,14 @@ app.get("/", function(req, res){
   res.render("home");
 })
 
+app.get("/profile",function(req,res){
+  res.render("profile");
+});
+
+app.get("/developers",function(req,res){
+  res.render("developers");
+});
+
 app.post("/", function(req, res){
   var search = req.body.search;
   console.log(search);

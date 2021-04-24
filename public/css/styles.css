@@ -111,6 +111,62 @@ body{
   color: inherit;
 }
 
+
+
+/* Profile Page */
+.upper{
+  padding: 2% 10%;
+  font-size: 1.2rem;
+  color: white;
+}
+
+.proimg{
+  text-align: center;
+}
+
+.profile{
+background-color: coral;
+padding-bottom: 10px;
+padding-top: 10px;
+border-radius: 2%;
+} 
+.first{
+  text-align: center;
+}
+
+.upper input{
+  width: 50%;
+}
+.upper button{
+  width:50%;
+}
+.user{
+  padding-top: 5%;
+}
+#profileimage{
+  max-width: 50%;
+  border-radius: 100%;
+}
+
+
+.dev
+{
+max-width:65%;
+border-radius : 100%;
+border: 3.5px solid black;
+margin: 10px 10px 10px 10px;
+}
+.des{
+  text-align: justify;
+}
+
+.dev-content
+{
+  padding-top: 5%;
+  text-align: center;
+} 
+
+
 /* Media Queries */
 @media (max-width : 1028px){
 
