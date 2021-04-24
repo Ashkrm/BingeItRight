@@ -3,7 +3,7 @@ body{
 }
 
 .container-fluid{
-  padding: 0 7%;
+  padding: 0 10%;
 }
 
 /* Navigation Bar */
@@ -21,7 +21,7 @@ body{
 .nav-logo{
   border-radius: 2px;
   padding: .5rem;
-  background-color: #14FFEC;
+  background-color: #14ffec;
   color: #393e46;
 }
 .nav-item{
@@ -112,6 +112,7 @@ body{
 }
 
 
+<<<<<<< HEAD
 
 /* Profile Page */
 .upper{
@@ -167,6 +168,34 @@ margin: 10px 10px 10px 10px;
 } 
 
 
+=======
+/*search page*/
+.search{
+  background-color: #f30067;
+  color: #dae1e7;
+  font-family: 'Raleway';
+}
+.search-heading{
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+.result-field{
+  background-color: #dae1e7;
+}
+.search-item:first-child{
+  padding: 3%;
+}
+.search-item{
+  margin: 0;
+  padding: 0 3% 3%;
+  border-radius: 10px;
+  color: black;
+}
+.resultimg{
+  width: 80%;
+}
+
+>>>>>>> b4e316eacedc57680c64cbba1184bf80d3ac96f2
 /* Media Queries */
 @media (max-width : 1028px){
 

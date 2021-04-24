@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require("express");
 const bodyParser = require("body-parser");
+const ejs = require("ejs");
 const http = require("https");
 
 const app = express();
@@ -11,10 +12,42 @@ app.use(express.static("public"));
 
 
 
+
 app.get("/", function(req, res){
   res.render("home");
-})
+});
 
+let search = "";
+app.get("/search", function(req, res){
+  const options = {
+  	"method": "GET",
+  	"hostname": "imdb8.p.rapidapi.com",
+  	"port": null,
+  	"path": "/title/find?q="+encodeURI(search),
+  	"headers": {
+  		"x-rapidapi-key": process.env.API_KEY,
+  		"x-rapidapi-host": "imdb8.p.rapidapi.com",
+  		"useQueryString": true
+  	}
+  };
+
+  const request = http.request(options, function (response) {
+  	const chunks = [];
+  	response.on("data", function (chunk) {
+  		chunks.push(chunk);
+  	});
+  	response.on("end", function () {
+  		const body = Buffer.concat(chunks);
+      const searchRes = JSON.parse(body);
+      console.log(body.toString());
+      console.log(searchRes);
+      res.render("search", {results : searchRes.results, search : search});
+  	});
+  });
+  request.end();
+});
+
+<<<<<<< HEAD
 app.get("/profile",function(req,res){
   res.render("profile");
 });
@@ -25,7 +58,12 @@ app.get("/developers",function(req,res){
 
 app.post("/", function(req, res){
   var search = req.body.search;
+=======
+app.post("/search", function(req, res){
+  search = req.body.search;
+>>>>>>> b4e316eacedc57680c64cbba1184bf80d3ac96f2
   console.log(search);
+  res.redirect("/search");
 })
 
 app.listen(3000, function(){
