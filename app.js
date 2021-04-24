@@ -47,7 +47,6 @@ app.get("/search", function(req, res){
   request.end();
 });
 
-<<<<<<< HEAD
 app.get("/profile",function(req,res){
   res.render("profile");
 });
@@ -56,12 +55,8 @@ app.get("/developers",function(req,res){
   res.render("developers");
 });
 
-app.post("/", function(req, res){
-  var search = req.body.search;
-=======
 app.post("/search", function(req, res){
   search = req.body.search;
->>>>>>> b4e316eacedc57680c64cbba1184bf80d3ac96f2
   console.log(search);
   res.redirect("/search");
 })

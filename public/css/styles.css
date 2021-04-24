@@ -111,9 +111,6 @@ body{
   color: inherit;
 }
 
-
-<<<<<<< HEAD
-
 /* Profile Page */
 .upper{
   padding: 2% 10%;
@@ -130,7 +127,7 @@ background-color: coral;
 padding-bottom: 10px;
 padding-top: 10px;
 border-radius: 2%;
-} 
+}
 .first{
   text-align: center;
 }
@@ -165,10 +162,8 @@ margin: 10px 10px 10px 10px;
 {
   padding-top: 5%;
   text-align: center;
-} 
+}
 
-
-=======
 /*search page*/
 .search{
   background-color: #f30067;
@@ -195,7 +190,6 @@ margin: 10px 10px 10px 10px;
   width: 80%;
 }
 
->>>>>>> b4e316eacedc57680c64cbba1184bf80d3ac96f2
 /* Media Queries */
 @media (max-width : 1028px){
 
