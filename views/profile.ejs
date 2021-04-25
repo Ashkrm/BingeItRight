@@ -1,55 +1,54 @@
 <%- include("partials/header"); -%>
-    <div class="row upper">
+<div class="row upper">
 
-        <div class="col-md-4 proimg">
-            <img src="/css/images/default.jpg"  id="profileimage">
-            <br><br>
-            <button class="btn btn-primary " type="submit">Change Photo</button>
-        </div>
-        <div class="profile col-md-8">
-            <p>Username:</p>
-            <p>First Name:</p>
-            <p>Last Name:</p>
-            <br>
-            <button class="btn btn-primary btn-lg" type="submit">See Your Watchlist!!!</button>
-       </div>
+  <div class="col-md-4 proimg">
+    <img src="/css/images/default.jpg" id="profileimage">
+    <br><br>
+    <button class="btn btn-primary " type="submit">Change Photo</button>
+  </div>
+  <div class="profile col-md-8">
+    <p>Username:</p>
+    <p>First Name:</p>
+    <p>Last Name:</p>
+    <br>
+    <button class="btn btn-primary btn-lg" type="submit">See Your Watchlist!!!</button>
+  </div>
 
-    </div>
+</div>
 
 
-    <div class="row upper user">
-        <div class="col-md-4 first">
-            <p>Edit Profile</p>
-        </div>
-    
-        <div class="col-md-8">
-            <form >  
-                <input type="text"  name="firstname" placeholder="First Name" required>
-                <br><br>
-                <input type="text"  name="secondname" placeholder="Second Name" required>
-                <br><br>
+<div class="row upper user">
+  <div class="col-md-4 first">
+    <p>Edit Profile</p>
+  </div>
 
-                <button class="btn btn-outline-primary" type="submit">Confirm</button>
-                <br><br>
-            </form>
-        </div>
-    </div>
+  <div class="col-md-8">
+    <form>
+      <input type="text" name="firstname" placeholder="First Name" required>
+      <br><br>
+      <input type="text" name="secondname" placeholder="Second Name" required>
+      <br><br>
 
-    <div class="row upper">
-        <div class="col-md-4 first">
-            <p>Change Password</p>
-        </div>
-        <div class="col-md-8">
-            <form >
-               
-                <input type="password" name="password" placeholder="Password" required>
-                <br><br>
-                <input type="password" name="confirmpassword" placeholder="Confirm Password" required>
-                <br><br>
-                <button type="submit" class="btn btn-outline-primary" >Confirm</button>
-                <br><br>
-            </form>
-        </div>
-    </div>
-    <%- include("partials/footer"); -%>
-      
+      <button class="btn btn-outline-primary" type="submit">Confirm</button>
+      <br><br>
+    </form>
+  </div>
+</div>
+
+<div class="row upper">
+  <div class="col-md-4 first">
+    <p>Change Password</p>
+  </div>
+  <div class="col-md-8">
+    <form>
+
+      <input type="password" name="password" placeholder="Password" required>
+      <br><br>
+      <input type="password" name="confirmpassword" placeholder="Confirm Password" required>
+      <br><br>
+      <button type="submit" class="btn btn-outline-primary">Confirm</button>
+      <br><br>
+    </form>
+  </div>
+</div>
+<%- include("partials/footer"); -%>

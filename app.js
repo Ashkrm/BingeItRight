@@ -3,7 +3,6 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const http = require("https");
-const { title } = require('process');
 
 const app = express();
 
@@ -39,8 +38,8 @@ app.get("/search", function(req, res){
   	response.on("end", function () {
   		const body = Buffer.concat(chunks);
       const searchRes = JSON.parse(body);
-      console.log(body.toString());
-      console.log(searchRes);
+      //console.log(body.toString());
+      //console.log(searchRes);
       res.render("search", {results : searchRes.results, search : search});
   	});
   });
