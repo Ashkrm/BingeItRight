@@ -39,8 +39,8 @@ app.get("/search", function(req, res){
   	response.on("end", function () {
   		const body = Buffer.concat(chunks);
       const searchRes = JSON.parse(body);
-      console.log(body.toString());
-      console.log(searchRes);
+      //console.log(body.toString());
+      //console.log(searchRes);
       res.render("search", {results : searchRes.results, search : search});
   	});
   });

@@ -106,7 +106,6 @@ body{
   color: white;
   font-family: 'Raleway', serif;
 }
-
 .footer a{
   color: inherit;
 }
@@ -117,11 +116,9 @@ body{
   font-size: 1.2rem;
   color: white;
 }
-
 .proimg{
   text-align: center;
 }
-
 .profile{
 background-color: coral;
 padding-bottom: 10px;
@@ -145,10 +142,7 @@ border-radius: 2%;
   max-width: 50%;
   border-radius: 100%;
 }
-
-
-.dev
-{
+.dev{
 max-width:65%;
 border-radius : 100%;
 border: 3.5px solid black;
@@ -157,16 +151,14 @@ margin: 10px 10px 10px 10px;
 .des{
   text-align: justify;
 }
-
-.dev-content
-{
+.dev-content{
   padding-top: 5%;
   text-align: center;
 }
 
 /*search page*/
 .search{
-  background-color: #f30067;
+  background-color: #393e46;
   color: #dae1e7;
   font-family: 'Raleway';
 }
@@ -175,7 +167,7 @@ margin: 10px 10px 10px 10px;
   padding-bottom: 2%;
 }
 .result-field{
-  background-color: #dae1e7;
+  background-color: #f30067;
 }
 .search-item:first-child{
   padding: 3%;
