@@ -80,14 +80,14 @@ const req = http.request(options, function (res) {
 	res.on("end", function () {
 		const body = Buffer.concat(chunks);
     const searches=JSON.parse(body);
-		console.log(body.toString());
-    console.log(searches);
+		//console.log(body.toString());
+    //console.log(searches);
     response.render("title",{result:searches});
 	});
 });
 
 req.end();
-  
+
 });
 
 app.post("/search", function(req, res){
