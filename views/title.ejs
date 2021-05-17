@@ -1,8 +1,26 @@
 <%- include("partials/header"); -%>
-<img src="<%=result.title.image.url%>">
-<p><%= result.title.title %></p>
-<h1><%=result.ratings.rating %></h1>
-<h1><%= result.plotOutline.text %></h1>
-<h1><%= result.genres %></h1>
-<h1><%= result.releaseDate %></h1>
+<div class="container-fluid title">
+  <div class="row">
+    <div class="col-md-9">
+      <h1 class="title-heading"><%= result.title.title %> (<%= result.title.year%>) </h1>
+    </div>
+    <div class="col-md-3">
+      <button class="btn btn-outline-light float-end title-btn" type="button" name="button">+ Add to your Watchlist</button>
+    </div>
+  </div>
+  <div class="title-field">
+    <div class="row">
+      <div class="col-sm-3 col-3">
+        <img src="<%=result.title.image.url%>" class="m">
+      </div>
+      <div class="col-sm-9 col-9">
+        <h3><strong>Plot:</strong> <%= result.plotOutline.text %></h3><br>
+        <h3><strong>Genres:</strong> <%= result.genres %></h3><br>
+        <h3><strong>Type:</strong> <%= result.title.titleType %></h3><br>
+        <h3><strong>Rating:</strong> <%= result.ratings.rating %></h3>
+      </div>
+    </div>
+
+  </div>
+</div>
 <%- include("partials/footer"); -%>

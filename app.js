@@ -3,6 +3,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const http = require("https");
+const mongoose = require("mongoose");
 
 const app = express();
 
@@ -10,7 +11,9 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
+const Comment = require(__dirname + '/schema/comment');
 
+mongoose.connect("mongodb://localhost:27017/bingeItRightDB",{ useUnifiedTopology: true, useNewUrlParser: true} );
 
 
 app.get("/", function(req, res){
@@ -81,7 +84,7 @@ const req = http.request(options, function (res) {
 		const body = Buffer.concat(chunks);
     const searches=JSON.parse(body);
 		//console.log(body.toString());
-    //console.log(searches);
+    console.log(searches);
     response.render("title",{result:searches});
 	});
 });

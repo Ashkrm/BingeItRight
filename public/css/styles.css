@@ -182,6 +182,26 @@ margin: 10px 10px 10px 10px;
   width: 80%;
 }
 
+
+/* Title page */
+.title{
+  background-color: #393e46;
+  color: #dae1e7;
+  font-family: 'Raleway';
+}
+.title-heading{
+  padding-top: 2%;
+}
+.title-btn{
+  position:relative;
+      top:25%; 
+}
+.title-field{
+  background-color: #14ffec;
+  padding: 2%;
+  color: black;
+}
+
 /* Media Queries */
 @media (max-width : 1028px){
 
