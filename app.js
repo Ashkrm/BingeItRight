@@ -23,7 +23,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect("mongodb://localhost:27017/bingeDB",{ useNewUrlParser: true });
+mongoose.connect("mongodb://localhost:27017/bingeDB",{ useNewUrlParser: true,useUnifiedTopology: true });
 mongoose.set("useCreateIndex",true);
 const userSchema= new mongoose.Schema({
 	email:String,
