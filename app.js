@@ -3,7 +3,10 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const http = require("https");
-const mongoose = require("mongoose");
+const mongoose=require("mongoose");
+const session=require("express-session");
+const passport=require("passport");
+const passportLocalMongoose=require("passport-local-mongoose");
 
 const app = express();
 
@@ -11,10 +14,30 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-const Comment = require(__dirname + '/schema/comment');
+app.use(session({
+	secret:'this is our project',
+	resave:false,
+	saveUninitialized:false
+}));
 
-mongoose.connect("mongodb://localhost:27017/bingeItRightDB",{ useUnifiedTopology: true, useNewUrlParser: true} );
+app.use(passport.initialize());
+app.use(passport.session());
 
+mongoose.connect("mongodb://localhost:27017/bingeDB",{ useNewUrlParser: true });
+mongoose.set("useCreateIndex",true);
+const userSchema= new mongoose.Schema({
+	email:String,
+	password:String,
+	user_name:String,
+	firstname:String,
+	lastname:String
+});
+userSchema.plugin(passportLocalMongoose);
+
+const User= new mongoose.model("User",userSchema);
+passport.use(User.createStrategy());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 app.get("/", function(req, res){
   res.render("home");
@@ -50,7 +73,10 @@ app.get("/search", function(req, res){
 });
 
 app.get("/profile",function(req,res){
-  res.render("profile");
+	if(req.isAuthenticated())
+      res.render("profile");
+	  else
+	  res.redirect("/login");
 });
 
 app.get("/developers",function(req,res){
@@ -84,7 +110,7 @@ const req = http.request(options, function (res) {
 		const body = Buffer.concat(chunks);
     const searches=JSON.parse(body);
 		//console.log(body.toString());
-    console.log(searches);
+    //console.log(searches);
     response.render("title",{result:searches});
 	});
 });
@@ -92,7 +118,55 @@ const req = http.request(options, function (res) {
 req.end();
 
 });
+app.get("/login",function(req,res){
+	res.render("login");
+})
+app.get("/register",function(req,res){
+	res.render("register");
+});
 
+app.get("/logout",function(req,res){
+	req.logout();
+	res.redirect("/");
+})
+
+app.post("/register",function(req,res){
+	User.register({username:req.body.username},req.body.password,function(err,user){
+		if(err)
+		{
+			console.log(err);
+			res.redirect("/register");
+		}
+		else
+		{
+			passport.authenticate("local")(req,res,function(){
+				res.redirect("/profile");
+			});
+		}
+	});
+});
+
+app.post("/login",function(req,res){
+	const user=new User({
+		username:req.body.username,
+		password:req.body.password
+		
+	});
+	req.login(user,function(err){
+		if(err)
+		{
+			console.log("galt")
+			console.log(err);
+			res.redirect("/login");
+		}
+		else
+		{
+			passport.authenticate("local")(req,res,function(){
+				res.redirect("/profile");
+			})
+		}
+	});
+});
 app.post("/search", function(req, res){
   search = req.body.search;
   console.log(search);

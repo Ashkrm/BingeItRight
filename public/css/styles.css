@@ -201,7 +201,17 @@ margin: 10px 10px 10px 10px;
   padding: 2%;
   color: black;
 }
-
+/* Login and Register page */
+.headings{
+  text-align: center;
+   color:white;
+}
+.emptyspace1{
+  height:205px;
+}
+.emptyspace2{
+  height: 222px;
+}
 /* Media Queries */
 @media (max-width : 1028px){
 
