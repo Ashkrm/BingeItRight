@@ -7,6 +7,9 @@ const mongoose=require("mongoose");
 const session=require("express-session");
 const passport=require("passport");
 const passportLocalMongoose=require("passport-local-mongoose");
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const findOrCreate = require('mongoose-findorcreate');
+
 
 const app = express();
 
@@ -25,22 +28,35 @@ app.use(passport.session());
 
 mongoose.connect("mongodb://localhost:27017/bingeDB",{ useNewUrlParser: true,useUnifiedTopology: true });
 mongoose.set("useCreateIndex",true);
-const userSchema= new mongoose.Schema({
-	email:String,
-	password:String,
-	user_name:String,
-	firstname:String,
-	lastname:String
-});
-userSchema.plugin(passportLocalMongoose);
 
-const User= new mongoose.model("User",userSchema);
+const User = require(__dirname+ '/schema/user');
+
 passport.use(User.createStrategy());
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+passport.serializeUser(function(user, done) {
+	done(null, user.id);
+  });
+  
+  passport.deserializeUser(function(id, done) {
+	User.findById(id, function(err, user) {
+	  done(err, user);
+	});
+  });
+
+passport.use(new GoogleStrategy({
+    clientID: process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SERVER,
+    callbackURL: "http://localhost:3000/auth/google/bingeIt",
+	userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
+  },
+  function(accessToken, refreshToken, profile, cb) {
+	      User.findOrCreate({ googleId: profile.id, username: profile.displayName }, function (err, user) {
+      return cb(err, user);
+    });
+  }
+));
 
 app.get("/", function(req, res){
-  res.render("home");
+		res.render("home");
 });
 
 let search = "";
@@ -64,8 +80,6 @@ app.get("/search", function(req, res){
   	response.on("end", function () {
   		const body = Buffer.concat(chunks);
       const searchRes = JSON.parse(body);
-      //console.log(body.toString());
-      //console.log(searchRes);
       res.render("search", {results : searchRes.results, search : search});
   	});
   });
@@ -109,8 +123,6 @@ const req = http.request(options, function (res) {
 	res.on("end", function () {
 		const body = Buffer.concat(chunks);
     const searches=JSON.parse(body);
-		//console.log(body.toString());
-    //console.log(searches);
     response.render("title",{result:searches});
 	});
 });
@@ -118,6 +130,16 @@ const req = http.request(options, function (res) {
 req.end();
 
 });
+app.get("/auth/google",
+  passport.authenticate("google", { scope: ["profile"] })
+  );
+
+  app.get("/auth/google/bingeIt", 
+  passport.authenticate("google", { failureRedirect: "/login" }),
+  function(req, res) {
+    res.redirect('/profile');
+  });
+
 app.get("/login",function(req,res){
 	res.render("login");
 })
