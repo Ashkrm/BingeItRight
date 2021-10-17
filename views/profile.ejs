@@ -2,16 +2,16 @@
 <div class="row upper">
 
   <div class="col-md-4 proimg">
-    <img src="/images/default.jpg" class="profileimage">
+    <img src="/images/profile.jpg" class="profileimage">
     <br><br>
     <button class="btn btn-primary " type="submit">Change Photo</button>
   </div>
   <div class="profile col-md-8">
-    <p>Username:</p>
-    <p>First Name:</p>
-    <p>Last Name:</p>
+    <p>Username:<strong><%=username%></strong></p>
+    <p>First Name:<strong><%=user.firstName%></strong></p>
+    <p>Last Name:<strong><%=user.lastName%></strong></p>
     <br>
-    <button class="btn btn-primary btn-lg" type="submit">See Your Watchlist!!!</button>
+    <a href="/seeWatchList"><<button class="btn btn-primary btn-lg" type="submit">See Your Watchlist!!!</button></a>
   </div>
 
 </div>
@@ -23,10 +23,10 @@
   </div>
 
   <div class="col-md-8">
-    <form>
-      <input type="text" name="firstname" placeholder="First Name" required>
+    <form action="/changeSettings" method="post">
+      <input type="text" name="firstName" placeholder="First Name" required>
       <br><br>
-      <input type="text" name="secondname" placeholder="Second Name" required>
+      <input type="text" name="lastName" placeholder="Last Name" required>
       <br><br>
 
       <button class="btn btn-outline-primary" type="submit">Confirm</button>
@@ -40,7 +40,7 @@
     <p>Change Password</p>
   </div>
   <div class="col-md-8">
-    <form>
+    <form action="/changePassword" method="post">
 
       <input type="password" name="password" placeholder="Password" required>
       <br><br>

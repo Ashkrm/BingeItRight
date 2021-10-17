@@ -9,8 +9,11 @@ const passport=require("passport");
 const passportLocalMongoose=require("passport-local-mongoose");
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const findOrCreate = require('mongoose-findorcreate');
-
-
+const changeSettings = require(__dirname + '/utilities/changeSettings');
+const changePassword = require(__dirname + '/utilities/changePassword');
+const updateWatchlist = require(__dirname + '/utilities/updateWatchlist');
+const seeWatchList = require(__dirname+'/utilities/seeWatchList');
+const remove = require(__dirname + '/utilities/remove');
 const app = express();
 
 app.set("view engine", "ejs");
@@ -28,6 +31,28 @@ app.use(passport.session());
 
 mongoose.connect("mongodb://localhost:27017/bingeDB",{ useNewUrlParser: true,useUnifiedTopology: true });
 mongoose.set("useCreateIndex",true);
+
+const authfunc = function(req, res, next) {
+  req.authCustom = {};
+  if (req.isAuthenticated()) {
+    req.authCustom.auth = true;
+    req.authCustom.username = req.user.username;
+    req.authCustom.firstName = "";
+    req.authCustom.lastName = "";
+    if(!req.user.firstName){
+     req.authCustom.firstName = "";
+     req.authCustom.lastName = "";
+   }else{
+     req.authCustom.firstName = req.user.firstName;
+     req.authCustom.lastName = req.user.lastName;
+   }
+  } else {
+    req.authCustom.auth = false;
+    req.authCustom.username = undefined;
+  }
+  next();
+};
+app.use(authfunc);
 
 const User = require(__dirname+ '/schema/user');
 
@@ -87,12 +112,26 @@ app.get("/search", function(req, res){
 });
 
 app.get("/profile",function(req,res){
-	if(req.isAuthenticated())
-      res.render("profile");
-	  else
-	  res.redirect("/login");
+		if (req.isAuthenticated()) {
+		  res.render("profile", {
+			username: req.authCustom.username,
+			auth: req.authCustom.auth,
+			user: {firstName : req.authCustom.firstName,lastName : req.authCustom.lastName}
+		  });
+		} else {
+		  const h = "You need to log in to your account first!"
+		  const pm = "Click On 'Sign in' provided In Navigation Bar";
+		  res.render("respond", {
+			h: h,
+			pm: pm,
+			auth: req.authCustom.auth,
+			user: {firstName : req.authCustom.firstName,lastName : req.authCustom.lastName}
+		  })
+		}
+	  
 });
 
+app.get('/seeWatchList', seeWatchList);
 app.get("/developers",function(req,res){
   res.render("developers");
 });
@@ -123,7 +162,7 @@ const req = http.request(options, function (res) {
 	res.on("end", function () {
 		const body = Buffer.concat(chunks);
     const searches=JSON.parse(body);
-    response.render("title",{result:searches});
+   response.render("title",{result:searches});
 	});
 });
 
@@ -189,6 +228,11 @@ app.post("/login",function(req,res){
 		}
 	});
 });
+app.post('/changeSettings', changeSettings);
+app.post("/changePassword", changePassword);
+app.post("/updateWatchlist", updateWatchlist);
+app.post("/remove", remove);
+
 app.post("/search", function(req, res){
   search = req.body.search;
   console.log(search);
