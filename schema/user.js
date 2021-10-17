@@ -8,9 +8,12 @@ const userSchema= new mongoose.Schema({
     username: String,
     firstName: String,
     lastName: String,
-    watchList: [{
+    wishList: [{
         titleId: String,
         title: String,
+        rating: Number,
+        titleType: String,
+        url: String,
     }],
 
 });

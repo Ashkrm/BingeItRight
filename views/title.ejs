@@ -5,7 +5,14 @@
       <h1 class="title-heading"><%= result.title.title %> (<%= result.title.year%>) </h1>
     </div>
     <div class="col-md-3">
-      <button class="btn btn-outline-light float-end title-btn" type="button" name="button">+ Add to your Watchlist</button>
+      <br>
+      <form class="" action="/updateWatchlist" method="post">
+        <input type="text" name="title" value="<%=result.title.title%>" style="display:none;">
+        <input type="number" name="rating" value="<%=result.ratings.rating%>" style="display:none;">
+        <input type ="text" name="titleType" value="<%= result.title.titleType %>" style="display:none;">
+        <input type ="text" name="image" value="<%= result.title.image.url %> " style="display: none;">
+      <button class="btn btn-outline-light float-end title-btn" type="submit" name="button">+ Add to your Watchlist</button>
+      </form>
     </div>
   </div>
   <div class="title-field">

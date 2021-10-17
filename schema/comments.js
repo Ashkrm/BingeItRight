@@ -1,3 +1,6 @@
+const findOrCreate = require('mongoose-findorcreate');
+const mongoose=require("mongoose");
+const passportLocalMongoose=require("passport-local-mongoose");
 const commentSchema = new mongoose.Schema({
   titleId : String,
   username : String,
@@ -7,4 +10,4 @@ const commentSchema = new mongoose.Schema({
   downvotes : Number
 });
 
-exports = new mongoose.model("Comment", commentSchema);
+module.exports = new mongoose.model("Comment", commentSchema);

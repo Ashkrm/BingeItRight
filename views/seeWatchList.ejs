@@ -1,0 +1,43 @@
+<%-include("partials/header")-%>
+<hr>
+<style media="screen">
+  img.m {
+    min-width: 109px;
+    min-height: 109px;
+  }
+  .container{
+    background:#ededed;
+    color:black !important;
+    border-radius:8px 8px;
+  }
+
+</style>
+<% for(var i=0; i<watchList.length; i++){ %>
+<%const movieTitle = watchList[i].title; %>
+<%const ratings = watchList[i].rating; %>
+<% const titleType = watchList[i].titleType; %>
+<% const url = watchList[i].url; %>
+<div class="" style="padding:0.3%;">
+    <div class="container pd" style="font-size: 22px;">
+    
+      <div class="row justify-content-center">
+        <div class="col-lg-2 col-md-2 col-sm-3 col-4">
+              <img src="<%=url%>" class="m" alt="Poster of <%=movieTitle%>">
+          </div>
+      
+          <div class="col-lg-9 col-md-9 col-sm-9 col-8" style="padding:1%;">
+            <b>
+              <h3><b><%= movieTitle %></b></h3>
+            </b>
+            <p> <b>Rating:</b> <%=ratings%></p>
+            <p> <b>Type: </b> <%= titleType%> </p>
+            <form action="/remove" method="post">
+                <input type="text" name="id" value="<%=movieTitle%>" style="display:none;">
+                <button type="submit" name="submit" class="btn" style="background-color: #14ffec; color:black">Remove from watch list!</button>
+          </div>
+      </div>
+    </div>
+</div>
+
+<% } %>
+<%-include("partials/footer")-%>
