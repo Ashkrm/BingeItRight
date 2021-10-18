@@ -14,8 +14,10 @@ const changePassword = require(__dirname + '/utilities/changePassword');
 const updateWatchlist = require(__dirname + '/utilities/updateWatchlist');
 const seeWatchList = require(__dirname+'/utilities/seeWatchList');
 const remove = require(__dirname + '/utilities/remove');
+const socketio = require(__dirname + '/utilities/socketio');
 const app = express();
-
+const server = require('http').createServer(app);
+const io = require('socket.io')(server);
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
@@ -53,7 +55,7 @@ const authfunc = function(req, res, next) {
   next();
 };
 app.use(authfunc);
-
+const Comment = require(__dirname + '/schema/comments');
 const User = require(__dirname+ '/schema/user');
 
 passport.use(User.createStrategy());
@@ -165,9 +167,7 @@ const req = http.request(options, function (res) {
    response.render("title",{result:searches});
 	});
 });
-
 req.end();
-
 });
 app.get("/auth/google",
   passport.authenticate("google", { scope: ["profile"] })
@@ -233,12 +233,25 @@ app.post("/changePassword", changePassword);
 app.post("/updateWatchlist", updateWatchlist);
 app.post("/remove", remove);
 
+app.post('/deleteComment', function(req, res) {
+	if (req.isAuthenticated()) {
+	  const commentId = req.body.delete;
+	  Comment.deleteOne({
+		username: req.user.username,
+		_id: commentId
+	  }, function(err, response) {
+		res.redirect('back');
+	  })
+	}
+  });
+
+io.on('connection',  socketio);
 app.post("/search", function(req, res){
   search = req.body.search;
   console.log(search);
   res.redirect("/search");
 })
 
-app.listen(3000, function(){
+server.listen(3000, function(){
   console.log("Server started on port 3000");
 });
